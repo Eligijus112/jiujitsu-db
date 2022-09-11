@@ -1,0 +1,8 @@
+# The real credentials 
+psql-creds.env
+
+# Virtual env 
+venv-db/
+
+# Pycache directory
+__pycache__/
