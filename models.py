@@ -19,6 +19,9 @@ class Users(Base):
     surname = Column(VARCHAR, nullable=False)
     email = Column(VARCHAR, nullable=False)
 
+    # Password field
+    password = Column(VARCHAR, nullable=False)
+
     # Boolean for beeing an admin
     is_admin = Column(BOOLEAN, nullable=False, default=False)
 
