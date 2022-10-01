@@ -34,6 +34,14 @@ To up the database container, run the following command:
 docker-compose up -d
 ```
 
+# Current database schema
+
+The database used in this project is **postgresql**. 
+
+The schema is as follows:
+
+![Database schema](docs/db-schema.png)
+
 # Managing the database with alembic 
 
 To create a new migration, run the following command:

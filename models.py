@@ -28,6 +28,9 @@ class Users(Base):
     # Boolean for activity
     is_active = Column(BOOLEAN, nullable=False, default=True)
 
+    # Image path of the user 
+    image_path = Column(VARCHAR, nullable=True)
+
     # Creation an update times 
     created_at = Column(DateTime, default=func.now())
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
@@ -40,26 +43,10 @@ class Users(Base):
             email: {self.email}, 
             is_admin: {self.is_admin}, 
             is_active: {self.is_active}, 
+            image_path: {self.image_path},
             created_at: {self.created_at}, 
             updated_at: {self.updated_at}
         """
-
-class Payments(Base): 
-    # Setting the tablename 
-    __tablename__ = 'payments'
-
-    # The autoincremented primary key
-    id = Column(Integer, primary_key=True, autoincrement=True)
-
-    # Foreign key for the user id 
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-
-    # Payment related information
-    payment_sum = Column(Float, nullable=False)
-
-    # Payment occurance time 
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
 class UserRanks(Base):
     # Setting up the tablename 
@@ -71,24 +58,12 @@ class UserRanks(Base):
     # Foreign key for the user id
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
-    # The rankname 
+    # The rankname (belt color)
     rank_name = Column(VARCHAR, nullable=False)
 
-    # The date when the user achieved the rank
-    rank_datetime = Column(DateTime, default=func.now())
+    # Stripe count 
+    stripe_count = Column(Integer, nullable=False)
 
-class UserInfo(Base): 
-    # Setting up the tablename 
-    __tablename__ = 'user_info'
-
-    # The autoincremented primary key
-    id = Column(Integer, primary_key=True, autoincrement=True)
-
-    # Foreign key for the user id
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-
-    # User related information
-    description = Column(VARCHAR, nullable=True)
-
-    # User uploaded image path
-    image = Column(VARCHAR, nullable=True)
+    # Creation an update times 
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
